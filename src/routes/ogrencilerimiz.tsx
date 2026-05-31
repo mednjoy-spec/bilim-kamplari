@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { PageHeader, CTABand } from "./kesfedin";
+import { PageHeader, CTABand } from "@/components/site/PageParts";
 
 export const Route = createFileRoute("/ogrencilerimiz")({
   head: () => ({

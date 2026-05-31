@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { PageHeader } from "./kesfedin";
+import { PageHeader } from "@/components/site/PageParts";
 import { useState } from "react";
 import { z } from "zod";
 
