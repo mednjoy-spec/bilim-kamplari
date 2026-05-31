@@ -9,8 +9,38 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as OgrencilerimizRouteImport } from './routes/ogrencilerimiz'
+import { Route as KesfedinRouteImport } from './routes/kesfedin'
+import { Route as GaleriRouteImport } from './routes/galeri'
+import { Route as EgitmenlerRouteImport } from './routes/egitmenler'
+import { Route as BasvuruRouteImport } from './routes/basvuru'
 import { Route as IndexRouteImport } from './routes/index'
 
+const OgrencilerimizRoute = OgrencilerimizRouteImport.update({
+  id: '/ogrencilerimiz',
+  path: '/ogrencilerimiz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KesfedinRoute = KesfedinRouteImport.update({
+  id: '/kesfedin',
+  path: '/kesfedin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GaleriRoute = GaleriRouteImport.update({
+  id: '/galeri',
+  path: '/galeri',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EgitmenlerRoute = EgitmenlerRouteImport.update({
+  id: '/egitmenler',
+  path: '/egitmenler',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BasvuruRoute = BasvuruRouteImport.update({
+  id: '/basvuru',
+  path: '/basvuru',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +49,102 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/basvuru': typeof BasvuruRoute
+  '/egitmenler': typeof EgitmenlerRoute
+  '/galeri': typeof GaleriRoute
+  '/kesfedin': typeof KesfedinRoute
+  '/ogrencilerimiz': typeof OgrencilerimizRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/basvuru': typeof BasvuruRoute
+  '/egitmenler': typeof EgitmenlerRoute
+  '/galeri': typeof GaleriRoute
+  '/kesfedin': typeof KesfedinRoute
+  '/ogrencilerimiz': typeof OgrencilerimizRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/basvuru': typeof BasvuruRoute
+  '/egitmenler': typeof EgitmenlerRoute
+  '/galeri': typeof GaleriRoute
+  '/kesfedin': typeof KesfedinRoute
+  '/ogrencilerimiz': typeof OgrencilerimizRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/basvuru'
+    | '/egitmenler'
+    | '/galeri'
+    | '/kesfedin'
+    | '/ogrencilerimiz'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/basvuru'
+    | '/egitmenler'
+    | '/galeri'
+    | '/kesfedin'
+    | '/ogrencilerimiz'
+  id:
+    | '__root__'
+    | '/'
+    | '/basvuru'
+    | '/egitmenler'
+    | '/galeri'
+    | '/kesfedin'
+    | '/ogrencilerimiz'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BasvuruRoute: typeof BasvuruRoute
+  EgitmenlerRoute: typeof EgitmenlerRoute
+  GaleriRoute: typeof GaleriRoute
+  KesfedinRoute: typeof KesfedinRoute
+  OgrencilerimizRoute: typeof OgrencilerimizRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/ogrencilerimiz': {
+      id: '/ogrencilerimiz'
+      path: '/ogrencilerimiz'
+      fullPath: '/ogrencilerimiz'
+      preLoaderRoute: typeof OgrencilerimizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kesfedin': {
+      id: '/kesfedin'
+      path: '/kesfedin'
+      fullPath: '/kesfedin'
+      preLoaderRoute: typeof KesfedinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galeri': {
+      id: '/galeri'
+      path: '/galeri'
+      fullPath: '/galeri'
+      preLoaderRoute: typeof GaleriRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/egitmenler': {
+      id: '/egitmenler'
+      path: '/egitmenler'
+      fullPath: '/egitmenler'
+      preLoaderRoute: typeof EgitmenlerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/basvuru': {
+      id: '/basvuru'
+      path: '/basvuru'
+      fullPath: '/basvuru'
+      preLoaderRoute: typeof BasvuruRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +157,22 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BasvuruRoute: BasvuruRoute,
+  EgitmenlerRoute: EgitmenlerRoute,
+  GaleriRoute: GaleriRoute,
+  KesfedinRoute: KesfedinRoute,
+  OgrencilerimizRoute: OgrencilerimizRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
