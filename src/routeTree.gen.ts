@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as OgrencilerimizRouteImport } from './routes/ogrencilerimiz'
 import { Route as KesfedinRouteImport } from './routes/kesfedin'
 import { Route as GaleriRouteImport } from './routes/galeri'
@@ -16,6 +17,11 @@ import { Route as EgitmenlerRouteImport } from './routes/egitmenler'
 import { Route as BasvuruRouteImport } from './routes/basvuru'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OgrencilerimizRoute = OgrencilerimizRouteImport.update({
   id: '/ogrencilerimiz',
   path: '/ogrencilerimiz',
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/galeri': typeof GaleriRoute
   '/kesfedin': typeof KesfedinRoute
   '/ogrencilerimiz': typeof OgrencilerimizRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/galeri': typeof GaleriRoute
   '/kesfedin': typeof KesfedinRoute
   '/ogrencilerimiz': typeof OgrencilerimizRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/galeri': typeof GaleriRoute
   '/kesfedin': typeof KesfedinRoute
   '/ogrencilerimiz': typeof OgrencilerimizRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,6 +90,7 @@ export interface FileRouteTypes {
     | '/galeri'
     | '/kesfedin'
     | '/ogrencilerimiz'
+    | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -89,6 +99,7 @@ export interface FileRouteTypes {
     | '/galeri'
     | '/kesfedin'
     | '/ogrencilerimiz'
+    | '/sitemap.xml'
   id:
     | '__root__'
     | '/'
@@ -97,6 +108,7 @@ export interface FileRouteTypes {
     | '/galeri'
     | '/kesfedin'
     | '/ogrencilerimiz'
+    | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -106,10 +118,18 @@ export interface RootRouteChildren {
   GaleriRoute: typeof GaleriRoute
   KesfedinRoute: typeof KesfedinRoute
   OgrencilerimizRoute: typeof OgrencilerimizRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ogrencilerimiz': {
       id: '/ogrencilerimiz'
       path: '/ogrencilerimiz'
@@ -162,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   GaleriRoute: GaleriRoute,
   KesfedinRoute: KesfedinRoute,
   OgrencilerimizRoute: OgrencilerimizRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
