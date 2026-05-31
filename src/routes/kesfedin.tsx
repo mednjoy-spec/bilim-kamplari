@@ -1,6 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
+import { PageHeader, CTABand } from "@/components/site/PageParts";
 import yusufPortrait from "@/assets/yusuf-durmus.jpg";
+
 
 export const Route = createFileRoute("/kesfedin")({
   head: () => ({
