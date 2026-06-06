@@ -1,12 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import heroLab from "@/assets/hero-lab.jpg";
-import programScience from "@/assets/program-science.jpg";
-import programEcology from "@/assets/program-ecology.jpg";
-import yusufPortrait from "@/assets/yusuf-durmus.jpg";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
+import heroLabAsset from "@/assets/hero-lab.jpg.asset.json";
+import programScienceAsset from "@/assets/program-science.jpg.asset.json";
+import programEcologyAsset from "@/assets/program-ecology.jpg.asset.json";
+import yusufPortraitAsset from "@/assets/yusuf-durmus.jpg.asset.json";
+import gallery1Asset from "@/assets/gallery-1.jpg.asset.json";
+import gallery2Asset from "@/assets/gallery-2.jpg.asset.json";
+import gallery3Asset from "@/assets/gallery-3.jpg.asset.json";
+
+const heroLab = heroLabAsset.url;
+const programScience = programScienceAsset.url;
+const programEcology = programEcologyAsset.url;
+const yusufPortrait = yusufPortraitAsset.url;
+const gallery1 = gallery1Asset.url;
+const gallery2 = gallery2Asset.url;
+const gallery3 = gallery3Asset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
