@@ -1,13 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHeader, CTABand } from "@/components/site/PageParts";
-import g1 from "@/assets/gallery-1.jpg";
-import g2 from "@/assets/gallery-2.jpg";
-import g3 from "@/assets/gallery-3.jpg";
-import g4 from "@/assets/gallery-4.jpg";
-import heroLab from "@/assets/hero-lab.jpg";
-import science from "@/assets/program-science.jpg";
-import ecology from "@/assets/program-ecology.jpg";
+import g1Asset from "@/assets/gallery-1.jpg.asset.json";
+import g2Asset from "@/assets/gallery-2.jpg.asset.json";
+import g3Asset from "@/assets/gallery-3.jpg.asset.json";
+import g4Asset from "@/assets/gallery-4.jpg.asset.json";
+import heroLabAsset from "@/assets/hero-lab.jpg.asset.json";
+import scienceAsset from "@/assets/program-science.jpg.asset.json";
+import ecologyAsset from "@/assets/program-ecology.jpg.asset.json";
+
+const g1 = g1Asset.url;
+const g2 = g2Asset.url;
+const g3 = g3Asset.url;
+const g4 = g4Asset.url;
+const heroLab = heroLabAsset.url;
+const science = scienceAsset.url;
+const ecology = ecologyAsset.url;
 
 export const Route = createFileRoute("/galeri")({
   head: () => ({
