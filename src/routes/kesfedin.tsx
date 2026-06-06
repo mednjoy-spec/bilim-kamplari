@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHeader, CTABand } from "@/components/site/PageParts";
-import yusufPortrait from "@/assets/yusuf-durmus.jpg";
+import yusufPortraitAsset from "@/assets/yusuf-durmus-katilimci.jpg.asset.json";
+
+const yusufPortrait = yusufPortraitAsset.url;
 
 
 export const Route = createFileRoute("/kesfedin")({
