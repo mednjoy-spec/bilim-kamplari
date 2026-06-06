@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 const NAV = [
+  { to: "/", label: "Anasayfa" },
   { to: "/kesfedin", label: "Bizi Keşfedin" },
   { to: "/ogrencilerimiz", label: "Öğrencilerimiz" },
   { to: "/egitmenler", label: "Eğitmenler" },
